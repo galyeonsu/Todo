@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a:link,
+a:visited {
+  list-style: none;
+}
+ul,
+li {
+  list-style: none;
+}
+body {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.todoContainer {
+  background-color: #ffe8ad;
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+.todoContainer h1 {
+  margin-bottom: 12px;
+}
+.inputFiled .todoInput {
+  width: calc(100% - 45px);
+  outline: none;
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 4px;
+}
+.inputFiled .addBtn {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  background-color: #333;
+  cursor: pointer;
+  vertical-align: middle;
+  border-radius: 3px;
+}
+.inputFiled .addBtn span {
+  display: block;
+  width: 2px;
+  height: 15px;
+  background-color: #ffe8ad;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+.inputFiled .addBtn span:last-child {
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+.todoList {
+  padding: 10px;
+  text-align: left;
+}
+.todoList li {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  user-select: none;
+}
+.todoList button {
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  margin-right: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  order: -1;
+}
+
+.todoList .complete {
+  text-decoration: line-through;
+  color: rgb(155, 155, 155);
+}
+.deleteBtn button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #333;
+  color: #fff;
+  padding: 8px;
+}
+.todoList li.complete button::after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 10px;
+  transform: translate(5px, -2px) rotate(45deg); /* 예시로 45도 회전 */
+  border-right: 2px solid #f1b116;
+  border-bottom: 2px solid #f1b116;
+  position: relative;
+}

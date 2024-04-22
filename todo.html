@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./todo.css" />
+    <script src="main.js"></script>
+  </head>
+
+  <body>
+    <div class="todoContainer">
+      <h1>Todo</h1>
+      <div class="inputFiled">
+        <input
+          type="text"
+          class="todoInput"
+          placeholder="addTodo"
+          onkeydown="keyCodeChecker(event)"
+        />
+        <button type="button" class="addBtn">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <ul class="todoList"></ul>
+      <div class="deleteBtn">
+        <button onclick="deleteAll()">전체삭제</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    const todoInput = document.querySelector(".todoInput");
+    const todoList = document.querySelector(".todoList");
+
+    function keyCodeChecker(e) {
+      if (e.key === "Enter" && todoInput.value !== "") {
+        createTodo();
+      }
+    }
+    document.querySelector(".addBtn").addEventListener("click", () => {
+      if (todoInput.value !== "") {
+        createTodo();
+      }
+    });
+
+    function createTodo() {
+      const newLi = document.createElement("li");
+      const newSpan = document.createElement("span");
+      const newBtn = document.createElement("button");
+
+      newLi.appendChild(newSpan);
+      newLi.appendChild(newBtn);
+
+      newSpan.textContent = todoInput.value;
+
+      todoList.appendChild(newLi);
+
+      todoInput.value = "";
+
+      newBtn.addEventListener("click", () => {
+        newLi.classList.toggle("complete");
+      });
+      newLi.addEventListener("dblclick", () => {
+        newLi.remove();
+      });
+    }
+    function deleteAll() {
+      const liList = document.querySelectorAll(".todoList li");
+      for (let i = 0; i < liList.length; i++) {
+        liList[i].remove();
+      }
+    }
+  </script>
+</html>
